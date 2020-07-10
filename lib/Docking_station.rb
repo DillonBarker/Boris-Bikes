@@ -9,7 +9,7 @@ class DockingStation
 
   def release_bike
     raise "There are no bikes" if @bikes.count == 0
-    @bikes
+    @bikes.pop
   end
 
   def dock(bike)
