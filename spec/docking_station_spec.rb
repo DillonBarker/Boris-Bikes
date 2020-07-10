@@ -21,4 +21,16 @@ describe DockingStation do
       expect{subject.dock(Bike.new)}.to raise_error("There are no spaces available")
     end
   end
+
+  describe '#initialize' do
+    it 'Creates docking station with spaces other than 20' do
+      docking_station = DockingStation.new(100)
+      expect(docking_station.capacity).to eq 100
+    end
+
+    it 'Creates docking station with 20 spaces by default' do
+      docking_station = DockingStation.new
+      expect(docking_station.capacity).to eq DockingStation::DEFAULT_CAPACITY
+    end
+  end
 end
