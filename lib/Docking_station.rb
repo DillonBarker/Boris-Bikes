@@ -28,8 +28,6 @@ DEFAULT_CAPACITY = 20
     end
   end
 
-  
-
 private
   def full?
     @bikes.count >= DEFAULT_CAPACITY
