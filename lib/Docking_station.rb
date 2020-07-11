@@ -22,6 +22,14 @@ DEFAULT_CAPACITY = 20
     @bikes << bike
   end
 
+  def distribute(bike_array)
+    bike_array.each do |bike|
+      dock(bike)
+    end
+  end
+
+  
+
 private
   def full?
     @bikes.count >= DEFAULT_CAPACITY

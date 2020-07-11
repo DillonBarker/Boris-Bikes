@@ -1,4 +1,7 @@
 require 'Docking_station'
+require 'bike'
+require 'garage'
+require 'vans'
 
 describe DockingStation do
 
@@ -36,6 +39,23 @@ describe DockingStation do
     it 'Creates docking station with 20 spaces by default' do
       docking_station = DockingStation.new
       expect(docking_station.capacity).to eq DockingStation::DEFAULT_CAPACITY
+    end
+  end
+
+  describe '#distribute' do
+    it 'puts fixed bikes back into docking stations' do
+      bike = Bike.new
+      docking_station = DockingStation.new
+      docking_station2 = DockingStation.new
+      van = Vans.new
+      garage = Garage.new
+      bike.report_broken
+      docking_station.dock(bike)
+      van.load(docking_station.bikes)
+      garage.deliver_to_garage(van.broken_van_bikes)
+      garage.fix_bikes(garage.bikes_to_be_fixed)
+      van.collect(garage.fixed_bikes)
+      expect(docking_station2.distribute(van.fixed_van_bikes)).to eq docking_station2.bikes
     end
   end
 end
