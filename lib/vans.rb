@@ -1,18 +1,18 @@
 class Vans
   attr_reader :capacity
-  attr_reader :stored_bikes
+  attr_reader :broken_van_bikes
 
-DEFAULT_CAPACITY = 20
+VAN_CAPACITY = 20
 
-  def initialize(capacity=DEFAULT_CAPACITY)
+  def initialize(capacity=VAN_CAPACITY)
     @capacity = capacity
-    @stored_bikes = []
+    @broken_van_bikes = []
   end
 
   def load(bike_array)
     bike_array.each do |bike|
       if bike.broken?
-        @stored_bikes << bike
+        @broken_van_bikes << bike
       else
         puts "bike was working so I didn't load it"
       end

@@ -8,7 +8,9 @@ describe Vans do
     bike = Bike.new
     bike.report_broken
     10.times { docking_station.dock(bike) }
+    bike2 = Bike.new
+    10.times { docking_station.dock(bike) }
     van = Vans.new
-    expect(van.load(docking_station.bikes)).to eq van.stored_bikes
+    expect(van.load(docking_station.bikes)).to eq van.broken_van_bikes
   end
 end
